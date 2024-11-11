@@ -1,0 +1,281 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//banco de dados sinais BitCoin
+
+model BitcoinSignalOneMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalFifteenMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalFortyFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalOneHour {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalFourHours {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalOneDay {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalOneWeek {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalOneMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalThreeMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalSixMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+model BitcoinSignalOneYear {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  String
+  createdAt DateTime @default(now())
+}
+
+// banco de dado resultados Bitcoin
+model BitcoinOperationResultOneMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultFiveMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultFifteenMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultFortyFiveMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultOneHour {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultFourHours {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultOneDay {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultOneWeek {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultOneMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultThreeMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultSixMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultOneYear {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          String
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
