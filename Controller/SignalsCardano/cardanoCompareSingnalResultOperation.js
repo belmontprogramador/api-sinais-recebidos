@@ -1,4 +1,3 @@
-//bitcoinCompareSingnalResultOperation.js
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const axios = require('axios');
@@ -26,29 +25,29 @@ const sendToTelegram = async (message) => {
 const getSignalTableByInterval = (interval) => {
   switch (parseInt(interval)) {
     case 1:
-      return prisma.bitcoinSignalOneMinute;
+      return prisma.cardanoSignalOneMinute;
     case 5:
-      return prisma.bitcoinSignalFiveMinute;
+      return prisma.cardanoSignalFiveMinute;
     case 15:
-      return prisma.bitcoinSignalFifteenMinute;
+      return prisma.cardanoSignalFifteenMinute;
     case 45:
-      return prisma.bitcoinSignalFortyFiveMinute;
+      return prisma.cardanoSignalFortyFiveMinute;
     case 60:
-      return prisma.bitcoinSignalOneHour;
+      return prisma.cardanoSignalOneHour;
     case 240:
-      return prisma.bitcoinSignalFourHours;
+      return prisma.cardanoSignalFourHours;
     case 1440:
-      return prisma.bitcoinSignalOneDay;
+      return prisma.cardanoSignalOneDay;
     case 10080:
-      return prisma.bitcoinSignalOneWeek;
+      return prisma.cardanoSignalOneWeek;
     case 43200:
-      return prisma.bitcoinSignalOneMonth;
+      return prisma.cardanoSignalOneMonth;
     case 129600:
-      return prisma.bitcoinSignalThreeMonth;
+      return prisma.cardanoSignalThreeMonth;
     case 259200:
-      return prisma.bitcoinSignalSixMonth;
+      return prisma.cardanoSignalSixMonth;
     case 518400:
-      return prisma.bitcoinSignalOneYear;
+      return prisma.cardanoSignalOneYear;
     default:
       throw new Error(`Intervalo de tempo não suportado: ${interval}`);
   }
@@ -58,36 +57,36 @@ const getSignalTableByInterval = (interval) => {
 const getOperationResultTableByInterval = (interval) => {
   switch (parseInt(interval)) {
     case 1:
-      return prisma.bitcoinOperationResultOneMinute;
+      return prisma.cardanoOperationResultOneMinute;
     case 5:
-      return prisma.bitcoinOperationResultFiveMinute;
+      return prisma.cardanoOperationResultFiveMinute;
     case 15:
-      return prisma.bitcoinOperationResultFifteenMinute;
+      return prisma.cardanoOperationResultFifteenMinute;
     case 45:
-      return prisma.bitcoinOperationResultFortyFiveMinute;
+      return prisma.cardanoOperationResultFortyFiveMinute;
     case 60:
-      return prisma.bitcoinOperationResultOneHour;
+      return prisma.cardanoOperationResultOneHour;
     case 240:
-      return prisma.bitcoinOperationResultFourHours;
+      return prisma.cardanoOperationResultFourHours;
     case 1440:
-      return prisma.bitcoinOperationResultOneDay;
+      return prisma.cardanoOperationResultOneDay;
     case 10080:
-      return prisma.bitcoinOperationResultOneWeek;
+      return prisma.cardanoOperationResultOneWeek;
     case 43200:
-      return prisma.bitcoinOperationResultOneMonth;
+      return prisma.cardanoOperationResultOneMonth;
     case 129600:
-      return prisma.bitcoinOperationResultThreeMonth;
+      return prisma.cardanoOperationResultThreeMonth;
     case 259200:
-      return prisma.bitcoinOperationResultSixMonth;
+      return prisma.cardanoOperationResultSixMonth;
     case 518400:
-      return prisma.bitcoinOperationResultOneYear;
+      return prisma.cardanoOperationResultOneYear;
     default:
       throw new Error(`Intervalo de tempo não suportado: ${interval}`);
   }
 };
 
 // Função para comparar e analisar o resultado de operações
-const bitcoinCompareSignalResultOperation = async (req, res) => {
+const cardanoCompareSignalResultOperation = async (req, res) => {
   try {
     const { ticker, interval, orderType, price } = req.body;
 
@@ -103,7 +102,7 @@ const bitcoinCompareSignalResultOperation = async (req, res) => {
     const lastOppositeSignal = await signalTable.findFirst({
       where: {
         ticker,
-        orderType: orderType === 'buy' ? 'sell' : 'buy', // busca o último sinal com tipo oposto
+        orderType: orderType === 'buy' ? 'sell' : 'buy' // busca o último sinal com tipo oposto
       },
       orderBy: {
         id: 'desc' // Ordena pelo ID em ordem decrescente para garantir que pegamos o último registro
@@ -124,15 +123,15 @@ const bitcoinCompareSignalResultOperation = async (req, res) => {
 
     // Compara o sinal atual com o último sinal oposto
     if (lastOppositeSignal.orderType === 'buy' && orderType === 'sell') {
-      resultType = price < lastOppositeSignal.price ? 'loss' : 'win';
-      resultMessage = `🚀 Resultado: ${ticker} ${resultType.toUpperCase()} 🚀\n⏳ Time frame: ${interval}\n📊 Preço de entrada (compra): ${lastOppositeSignal.price}\n📈 Preço de saída (venda): ${price}\n📉 Diferença de preço: ${priceDifference} pips`;
-    } else if (lastOppositeSignal.orderType === 'sell' && orderType === 'buy') {
-      resultType = price > lastOppositeSignal.price ? 'loss' : 'win';
-      resultMessage = `🚀 Resultado:${ticker} ${resultType.toUpperCase()} 🚀\n⏳ Time frame: ${interval}\n📊 Preço de entrada (venda): ${lastOppositeSignal.price}\n📉 Preço de saída (compra): ${price}\n📉 Diferença de preço: ${priceDifference} pips`;
-    } else {
-      console.error('Os sinais não são compatíveis para comparação.');
-      return res.status(400).json({ message: 'Os sinais não são compatíveis para comparação.' });
-    }
+        resultType = price < lastOppositeSignal.price ? 'loss' : 'win';  // Se o preço atual de venda for menor que o preço de compra, é loss
+        resultMessage = `🚀 Resultado:${ticker} ${resultType.toUpperCase()} 🚀\n⏳ Time frame: ${interval}\n📊 Preço de entrada (compra): ${lastOppositeSignal.price}\n📈 Preço de saída (venda): ${price}\n📉 Diferença de preço: ${priceDifference} pips`;
+      } else if (lastOppositeSignal.orderType === 'sell' && orderType === 'buy') {
+        resultType = price > lastOppositeSignal.price ? 'loss' : 'win';  // Se o preço atual de compra for maior que o preço de venda, é loss
+        resultMessage = `🚀 Resultado:${ticker} ${resultType.toUpperCase()} 🚀\n⏳ Time frame: ${interval}\n📊 Preço de entrada (venda): ${lastOppositeSignal.price}\n📉 Preço de saída (compra): ${price}\n📉 Diferença de preço: ${priceDifference} pips`;
+      } else {
+        console.error('Os sinais não são compatíveis para comparação.');
+        return res.status(400).json({ message: 'Os sinais não são compatíveis para comparação.' });
+      }
 
     // Envia o resultado da operação para o Telegram
     await sendToTelegram(resultMessage);
@@ -148,7 +147,7 @@ const bitcoinCompareSignalResultOperation = async (req, res) => {
         currentOrderType: orderType,
         currentPrice: parseFloat(price),
         result: resultType,
-        priceDifference: priceDifference, // Armazenando a diferença de preço
+        priceDifference: priceDifference // Armazenando a diferença de preço
       }
     });
 
@@ -162,4 +161,4 @@ const bitcoinCompareSignalResultOperation = async (req, res) => {
   }
 };
 
-module.exports = bitcoinCompareSignalResultOperation;
+module.exports = cardanoCompareSignalResultOperation;

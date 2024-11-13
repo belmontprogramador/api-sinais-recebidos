@@ -5,9 +5,9 @@ const app = express();
 app.use(express.json())
 
 const signalBitcoin = require('./Routes/SignalBitcoin/bitcoinRoutesSignals')
-const signalSolana = require('./Routes/SignalSolana/solanaRoutesSignals')
+const signalCardano = require('./Routes/SignalCardano/cardanoRoutesSignals')
 
 app.use(signalBitcoin)
-app.use(signalSolana)
+app.use(signalCardano)
 
 module.exports = app

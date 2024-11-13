@@ -13,14 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//banco de dados sinais BitCoin
+// Banco de dados de sinais Bitcoin
 
 model BitcoinSignalOneMinute {
   id        Int      @id @default(autoincrement())
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 1 minuto
   createdAt DateTime @default(now())
 }
 
@@ -29,7 +29,7 @@ model BitcoinSignalFiveMinute {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 5 minutos
   createdAt DateTime @default(now())
 }
 
@@ -38,7 +38,7 @@ model BitcoinSignalFifteenMinute {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 15 minutos
   createdAt DateTime @default(now())
 }
 
@@ -47,7 +47,7 @@ model BitcoinSignalFortyFiveMinute {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 45 minutos
   createdAt DateTime @default(now())
 }
 
@@ -56,7 +56,7 @@ model BitcoinSignalOneHour {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 60 minutos (1 hora)
   createdAt DateTime @default(now())
 }
 
@@ -65,7 +65,7 @@ model BitcoinSignalFourHours {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 240 minutos (4 horas)
   createdAt DateTime @default(now())
 }
 
@@ -74,7 +74,7 @@ model BitcoinSignalOneDay {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 1440 minutos (1 dia)
   createdAt DateTime @default(now())
 }
 
@@ -83,7 +83,7 @@ model BitcoinSignalOneWeek {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 10080 minutos (1 semana)
   createdAt DateTime @default(now())
 }
 
@@ -92,7 +92,7 @@ model BitcoinSignalOneMonth {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 43200 minutos (1 mês)
   createdAt DateTime @default(now())
 }
 
@@ -101,7 +101,7 @@ model BitcoinSignalThreeMonth {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 129600 minutos (3 meses)
   createdAt DateTime @default(now())
 }
 
@@ -110,7 +110,7 @@ model BitcoinSignalSixMonth {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 259200 minutos (6 meses)
   createdAt DateTime @default(now())
 }
 
@@ -119,15 +119,16 @@ model BitcoinSignalOneYear {
   ticker    String
   orderType String
   price     Float
-  interval  String
+  interval  Int      // 518400 minutos (1 ano)
   createdAt DateTime @default(now())
 }
 
-// banco de dado resultados Bitcoin
+// Banco de dados de resultados das operações Bitcoin
+
 model BitcoinOperationResultOneMinute {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 1 minuto
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
@@ -140,124 +141,262 @@ model BitcoinOperationResultOneMinute {
 model BitcoinOperationResultFiveMinute {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 5 minutos
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultFifteenMinute {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 15 minutos
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultFortyFiveMinute {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 45 minutos
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultOneHour {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 60 minutos (1 hora)
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultFourHours {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 240 minutos (4 horas)
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultOneDay {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 1440 minutos (1 dia)
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultOneWeek {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 10080 minutos (1 semana)
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultOneMonth {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 43200 minutos (1 mês)
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultThreeMonth {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 129600 minutos (3 meses)
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
 
 model BitcoinOperationResultSixMonth {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int      // 259200 minutos (6 meses)
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model BitcoinOperationResultOneYear {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int      // 518400 minutos (1 ano)
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+// Banco de dados para sinais da Cardano
+
+model CardanoSignalOneMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalFifteenMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalFortyFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalOneHour {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalFourHours {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalOneDay {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalOneWeek {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalOneMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalThreeMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalSixMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model CardanoSignalOneYear {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+// Banco de dados para resultados de operações da Cardano
+
+model CardanoOperationResultOneMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
@@ -267,15 +406,146 @@ model BitcoinOperationResultSixMonth {
   createdAt         DateTime @default(now())
 }
 
-model BitcoinOperationResultOneYear {
+model CardanoOperationResultFiveMinute {
   id                Int      @id @default(autoincrement())
   ticker            String
-  interval          String
+  interval          Int
   previousOrderType String
   previousPrice     Float
   currentOrderType  String
   currentPrice      Float
-  result            String   // 'win' ou 'loss'
-  priceDifference   Float    // Diferença de preço
+  result            String
+  priceDifference   Float
   createdAt         DateTime @default(now())
 }
+
+model CardanoOperationResultFifteenMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultFortyFiveMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultOneHour {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultFourHours {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultOneDay {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultOneWeek {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultOneMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultThreeMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultSixMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model CardanoOperationResultOneYear {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+

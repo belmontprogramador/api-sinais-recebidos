@@ -1,4 +1,3 @@
-// bitcoinPostSignalTradingView.js
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const axios = require('axios');
@@ -8,7 +7,7 @@ require('dotenv').config();
 const sendToTelegram = async (message) => {
   const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
   const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
+  
   const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
   try {
@@ -22,29 +21,18 @@ const sendToTelegram = async (message) => {
   }
 };
 
-// Função para enviar o sinal para a rota '/comparesignalresultoperationbitcoin'
+// Função para enviar o sinal para a rota '/compareSignalResultOperation'
 const sendToCompareSignal = async (signal) => {
   try {
-    const response = await axios.post('http://localhost:3004/comparesignalresultoperationbitcoin', {
+    const response = await axios.post('http://localhost:3004/comparesingnalresultoperationcardano', {
       ticker: signal.ticker,
       orderType: signal.orderType,
       price: signal.price,
       interval: signal.interval,
     });
-    console.log('Sinal enviado para /comparesignalresultoperationbitcoin com sucesso:', response.data);
+    console.log('Sinal enviado para /compareSignalResultOperation:', response.data);
   } catch (error) {
-    console.error('Erro ao enviar o sinal para /comparesignalresultoperationbitcoin:', error.message);
-    console.error('Dados do erro:', {
-      url: 'http://localhost:3004/comparesignalresultoperationbitcoin',
-      data: {
-        ticker: signal.ticker,
-        orderType: signal.orderType,
-        price: signal.price,
-        interval: signal.interval,
-      },
-      status: error.response ? error.response.status : 'sem status',
-      headers: error.config ? error.config.headers : 'sem headers'
-    });
+    console.error('Erro ao enviar o sinal para /compareSignalResultOperation:', error.message);
   }
 };
 
@@ -70,62 +58,62 @@ const insertSignalIntoCorrectTable = async (ticker, orderType, price, interval, 
 
   switch (parseInt(interval)) {
     case 1:
-      signal = await prisma.bitcoinSignalOneMinute.create({
+      signal = await prisma.cardanoSignalOneMinute.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 5:
-      signal = await prisma.bitcoinSignalFiveMinute.create({
+      signal = await prisma.cardanoSignalFiveMinute.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 15:
-      signal = await prisma.bitcoinSignalFifteenMinute.create({
+      signal = await prisma.cardanoSignalFifteenMinute.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 45:
-      signal = await prisma.bitcoinSignalFortyFiveMinute.create({
+      signal = await prisma.cardanoSignalFortyFiveMinute.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 60:
-      signal = await prisma.bitcoinSignalOneHour.create({
+      signal = await prisma.cardanoSignalOneHour.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 240:
-      signal = await prisma.bitcoinSignalFourHours.create({
+      signal = await prisma.cardanoSignalFourHours.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 1440:
-      signal = await prisma.bitcoinSignalOneDay.create({
+      signal = await prisma.cardanoSignalOneDay.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 10080:
-      signal = await prisma.bitcoinSignalOneWeek.create({
+      signal = await prisma.cardanoSignalOneWeek.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 43200:
-      signal = await prisma.bitcoinSignalOneMonth.create({
+      signal = await prisma.cardanoSignalOneMonth.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 129600:
-      signal = await prisma.bitcoinSignalThreeMonth.create({
+      signal = await prisma.cardanoSignalThreeMonth.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 259200:
-      signal = await prisma.bitcoinSignalSixMonth.create({
+      signal = await prisma.cardanoSignalSixMonth.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
     case 518400:
-      signal = await prisma.bitcoinSignalOneYear.create({
+      signal = await prisma.cardanoSignalOneYear.create({
         data: { ticker, orderType, price: parseFloat(price), interval, createdAt: new Date(timenow) },
       });
       break;
@@ -137,11 +125,11 @@ const insertSignalIntoCorrectTable = async (ticker, orderType, price, interval, 
 };
 
 // Função que recebe o sinal do TradingView no formato JSON e processa o sinal
-const bitcoinSignalsTradingView = async (req, res) => {
+const cardanoSignalsTradingView = async (req, res) => {
   try {
     const { ticker, interval, orderType, price, timenow } = req.body;
 
-    if (!ticker || interval == null || !orderType || !price || !timenow) {
+    if (!ticker || !interval || !orderType || !price || !timenow) {
       return res.status(400).json({ message: 'Dados insuficientes!' });
     }
 
@@ -152,8 +140,8 @@ const bitcoinSignalsTradingView = async (req, res) => {
       🚀 Sinal de ${orderType.toUpperCase()} em ${ticker}
       ⏳ Time frame: ${intervalDisplay}
       💰 Preço: ${price}
-      ⏲️ Horário do sinal: ${timenow}
-    `;
+      ⏲️ Horário do sinal: ${timenow}`
+    ;
 
     await sendToTelegram(message);
 
@@ -168,4 +156,4 @@ const bitcoinSignalsTradingView = async (req, res) => {
   }
 };
 
-module.exports = bitcoinSignalsTradingView;
+module.exports = cardanoSignalsTradingView;

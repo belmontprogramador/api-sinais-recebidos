@@ -4,32 +4,32 @@ const prisma = new PrismaClient();
 const resetDatabase = async (req, res) => {
   try {
     // Apagar todas as entradas das tabelas de resultados de operações
-    await prisma.operationResultOneMinute.deleteMany({});
-    await prisma.operationResultFiveMinute.deleteMany({});
-    await prisma.operationResultFifteenMinute.deleteMany({});
-    await prisma.operationResultFortyFiveMinute.deleteMany({});
-    await prisma.operationResultOneHour.deleteMany({});
-    await prisma.operationResultFourHours.deleteMany({});
-    await prisma.operationResultOneDay.deleteMany({});
-    await prisma.operationResultOneWeek.deleteMany({});
-    await prisma.operationResultOneMonth.deleteMany({});
-    await prisma.operationResultThreeMonth.deleteMany({});
-    await prisma.operationResultSixMonth.deleteMany({});
-    await prisma.operationResultOneYear.deleteMany({});
+    await prisma.bitcoinOperationResultOneMinute.deleteMany({});
+    await prisma.bitcoinOperationResultFiveMinute.deleteMany({});
+    await prisma.bitcoinOperationResultFifteenMinute.deleteMany({});
+    await prisma.bitcoinOperationResultFortyFiveMinute.deleteMany({});
+    await prisma.bitcoinOperationResultOneHour.deleteMany({});
+    await prisma.bitcoinOperationResultFourHours.deleteMany({});
+    await prisma.bitcoinOperationResultOneDay.deleteMany({});
+    await prisma.bitcoinOperationResultOneWeek.deleteMany({});
+    await prisma.bitcoinOperationResultOneMonth.deleteMany({});
+    await prisma.bitcoinOperationResultThreeMonth.deleteMany({});
+    await prisma.bitcoinOperationResultSixMonth.deleteMany({});
+    await prisma.bitcoinOperationResultOneYear.deleteMany({});
 
     // Apagar todas as entradas das tabelas de sinais
-    await prisma.signalOneMinute.deleteMany({});
-    await prisma.signalFiveMinute.deleteMany({});
-    await prisma.signalFifteenMinute.deleteMany({});
-    await prisma.signalFortyFiveMinute.deleteMany({});
-    await prisma.signalOneHour.deleteMany({});
-    await prisma.signalFourHours.deleteMany({});
-    await prisma.signalOneDay.deleteMany({});
-    await prisma.signalOneWeek.deleteMany({});
-    await prisma.signalOneMonth.deleteMany({});
-    await prisma.signalThreeMonth.deleteMany({});
-    await prisma.signalSixMonth.deleteMany({});
-    await prisma.signalOneYear.deleteMany({});
+    await prisma.bitcoinSignalOneMinute.deleteMany({});
+    await prisma.bitcoinSignalFiveMinute.deleteMany({});
+    await prisma.bitcoinSignalFifteenMinute.deleteMany({});
+    await prisma.bitcoinSignalFortyFiveMinute.deleteMany({});
+    await prisma.bitcoinSignalOneHour.deleteMany({});
+    await prisma.bitcoinSignalFourHours.deleteMany({});
+    await prisma.bitcoinSignalOneDay.deleteMany({});
+    await prisma.bitcoinSignalOneWeek.deleteMany({});
+    await prisma.bitcoinSignalOneMonth.deleteMany({});
+    await prisma.bitcoinSignalThreeMonth.deleteMany({});
+    await prisma.bitcoinSignalSixMonth.deleteMany({});
+    await prisma.bitcoinSignalOneYear.deleteMany({});
 
     console.log('Banco de dados resetado com sucesso!');
     res.status(200).json({ message: 'Banco de dados resetado com sucesso!' });
