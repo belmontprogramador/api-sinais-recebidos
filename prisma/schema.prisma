@@ -549,3 +549,539 @@ model CardanoOperationResultOneYear {
   createdAt         DateTime @default(now())
 }
 
+// Banco de dados para sinais da Solana
+
+model SolanaSignalOneMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalFifteenMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalFortyFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalOneHour {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalFourHours {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalOneDay {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalOneWeek {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalOneMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalThreeMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalSixMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model SolanaSignalOneYear {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+// Banco de dados para resultados de operações da Solana
+
+model SolanaOperationResultOneMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultFiveMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultFifteenMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultFortyFiveMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultOneHour {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultFourHours {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultOneDay {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultOneWeek {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultOneMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultThreeMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultSixMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model SolanaOperationResultOneYear {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+// Banco de dados para sinais da Polkadot
+
+model PolkadotSignalOneMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalFifteenMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalFortyFiveMinute {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalOneHour {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalFourHours {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalOneDay {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalOneWeek {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalOneMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalThreeMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalSixMonth {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+model PolkadotSignalOneYear {
+  id        Int      @id @default(autoincrement())
+  ticker    String
+  orderType String
+  price     Float
+  interval  Int
+  createdAt DateTime @default(now())
+}
+
+// Banco de dados para resultados de operações da Polkadot
+
+model PolkadotOperationResultOneMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String   // 'win' ou 'loss'
+  priceDifference   Float    // Diferença de preço
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultFiveMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultFifteenMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultFortyFiveMinute {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultOneHour {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultFourHours {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultOneDay {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultOneWeek {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultOneMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultThreeMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultSixMonth {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+
+model PolkadotOperationResultOneYear {
+  id                Int      @id @default(autoincrement())
+  ticker            String
+  interval          Int
+  previousOrderType String
+  previousPrice     Float
+  currentOrderType  String
+  currentPrice      Float
+  result            String
+  priceDifference   Float
+  createdAt         DateTime @default(now())
+}
+

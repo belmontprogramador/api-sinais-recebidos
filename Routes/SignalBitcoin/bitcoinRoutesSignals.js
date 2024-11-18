@@ -14,6 +14,6 @@ signalBitcoin.post('/comparesignalresultoperationbitcoin', bitcoinCompareSignalR
 signalBitcoin.post('/reset-databasebitcoin', resetDatabase);
 signalBitcoin.get('/hello', helloWorld);
 signalBitcoin.get('/getResultSignalBitcoin', getResultSignalBitcoin)
-signalBitcoin.post('/sendResultsByPhoneBitcoin', sendResultsByPhoneBitcoin )
+signalBitcoin.post('/sendResultsByPhoneBitcoins', sendResultsByPhoneBitcoin )
 
 module.exports = signalBitcoin;
